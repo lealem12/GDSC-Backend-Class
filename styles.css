@@ -7,7 +7,7 @@
   }
   
   body {
-    margin: 5rem 0 0 0;
+    margin: 0.8rem 0;
   }
   .calculator-main {
     display: grid;
@@ -17,6 +17,7 @@
   .calculator-main > .result {
     background: hsl(188, 10%, 20%);
     height: 7rem;
+    overflow-x: hidden;
   }
 
   .calculator-main > .btns {
@@ -35,7 +36,7 @@
   }
   
   .calculator-main > .btns > button:hover {
-    background-color: rgb(146, 135, 197);
+    background-color: rgba(80, 170, 114, 0.6); ;
   }
   
   .span-two {
@@ -54,3 +55,20 @@
     word-break: break-all;
   }
   
+
+
+
+
+
+
+  /* Dom manipulation */
+
+.result .previous-operand { 
+    color: whitesmoke;
+    font-size: 1.5rem; 
+}
+
+.result .current-operand { 
+    color: whitesmoke; 
+    font-size: 2.5rem; 
+}
