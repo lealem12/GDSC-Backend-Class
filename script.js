@@ -57,7 +57,31 @@ class Calculator {
     this.previousOperand = ''
   }
 
-  
+  //new
+  getFibSeq() {
+    const current = parseInt(this.currentOperand)
+    let a = 0, b = 1;
+    let temp = 0
+    for (let i = 1; i < current; i++) {
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+    this.previousOperand = current
+    this.currentOperand = temp
+    this.operation = undefined
+  }
+
+  getFact() {
+  let result = 1;
+  const current = parseInt(this.currentOperand)
+  for (let i = 1; i <= current; i++) {
+      result *= i;
+  }
+  this.previousOperand = current
+  this.currentOperand = result
+  this.operation = undefined
+  }
 
   getDisplayNumber(number) {
     const stringNumber = number.toString()
@@ -86,6 +110,20 @@ class Calculator {
       this.previousOperandTextElement.innerText = ''
     }
   }
+
+  updateDisplayFib() {
+    this.currentOperandTextElement.innerText =
+      this.getDisplayNumber(this.currentOperand)
+      this.previousOperandTextElement.innerText =
+        `Fb(${this.getDisplayNumber(this.previousOperand)})`
+  }
+
+  updateDisplayFact() {
+    this.currentOperandTextElement.innerText =
+      this.getDisplayNumber(this.currentOperand)
+      this.previousOperandTextElement.innerText =
+        `Fact(${this.getDisplayNumber(this.previousOperand)})`
+  }
 }
 
 
@@ -97,7 +135,9 @@ const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
-
+//new
+const fibonacciButton = document.querySelector('[data-fb]')
+const factorialButton = document.querySelector('[data-fact]')
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
@@ -130,3 +170,13 @@ deleteButton.addEventListener('click', button => {
   calculator.updateDisplay()
 })
 
+// new
+fibonacciButton.addEventListener('click', button => {
+  calculator.getFibSeq()
+  calculator.updateDisplayFib()
+})
+
+factorialButton.addEventListener('click', button => {
+  calculator.getFact()
+  calculator.updateDisplayFact()
+})
